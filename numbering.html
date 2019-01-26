@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Util for numbering multiple text nodes in a comic">
+    <meta name="author" content="Jan Chimiak">
+    <link rel="stylesheet" href="numbering.css">
+    <title>numbering</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="numbering.js"></script>
+</head>
+
+<body>
+    <section class="container">
+        <div class="one">
+            <div>
+                <button id="prev10-button">-10 [</button>
+                <button id="prev-button">-1 w</button>
+                <span id="label">page_000.jpg</span>
+                <button class="right-button" id="next10-button">+10 ]</button>
+                <button class="right-button" id="next-button">+1 e</button>
+            </div>
+            <img id="page" src="page_000.jpg" border="1" alt="split your pdf with
+convert -density 300 -quality 70 somepdf.pdf page_%03d.jpg
+or (if, after all converts are applied), merge them with 
+convert *jpg annotated.pdf">
+        </div>
+        <div class="two">
+            <div>
+                index <input id="index" /> suffix <input id="suffix" />
+                <button id="copy-button">copy</button>
+                <button id="clear-button">clear c</button>
+                <button id="convert-button">convert \r</button> shift click for white
+            </div>
+            <div id="box"></div>
+        </div>
+    </section>
+</body>
+
+</html>
