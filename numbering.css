@@ -1,0 +1,47 @@
+.container {
+    width: 100%;
+    margin: auto;
+}
+.one {
+    width: 40%;
+    float: left;
+}
+.two {
+    width: 50%;
+    float: right;
+}
+.right-button {
+    float: right;
+}
+.two {
+    width: 50%;
+    float: right;
+}
+#page {
+	height: 100%;
+    z-index: 10;
+	white-space:pre;
+    display: block;
+    margin: 0 auto;
+}
+#box {
+    width: 100%;
+	height: 50%;
+	font-family: monospace;
+    white-space: pre;
+}
+.tag {
+    z-index: 1;
+	font-family: "Times New Roman", Times, serif;
+	font-weight: bold;
+	position:absolute ;
+}
+.main-color {
+	color: #D300A8;
+}
+.alt-color {
+	color: #FFFFFF;
+}
+.tagref {
+    white-space: pre;
+}
