@@ -1,9 +1,10 @@
 var numbering = {};
+numbering.padding = 3;
 numbering.pagePrefix = "page_";
 numbering.pageSuffix = ".jpg";
 numbering.incrementAndPad = function(number, increment) {
   var page = (parseInt(number, 10) + increment).toString();
-  return page.padStart(3, "0");
+  return page.padStart(numbering.padding, "0");
 }
 numbering.copyToClipboard = function(element) {
   var $temp = $("<input>");
