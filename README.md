@@ -24,6 +24,8 @@ This tool helps fast creation of ImageMagick to add annotations with numbers.
 
 `c` clear
 
+`r` reset index
+
 `click` add a violet tag
 
 `shift click` add a white tag
