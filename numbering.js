@@ -94,6 +94,9 @@ numbering.clear = function() {
   numbering.copyToClipboard('#box')
   $('#box').empty();
 };
+numbering.resetIndex = function() {
+  $("#index:text").val("1")
+};
 numbering.convert = function() {
   numbering.convertTagsToCommands();
   numbering.copyToClipboard('#box')
@@ -123,6 +126,10 @@ numbering.navigationHandler = function(e) {
   if (e.which === 99) {
     numbering.clear();
   }
+  // r
+  if (e.which === 114) {
+    numbering.resetIndex();
+  }
 };
 jQuery(document).ready(function() {
   $(document).on('keypress', numbering.navigationHandler);
@@ -131,6 +138,7 @@ jQuery(document).ready(function() {
     numbering.copyToClipboard('#box')
   });
   $("#clear-button").click(numbering.clear);
+  $("#reset-button").click(numbering.resetIndex);
   $("#convert-button").click(numbering.convert);
   $("#prev10-button").click(numbering.goToPrev10);
   $("#prev-button").click(numbering.goToPrev);
