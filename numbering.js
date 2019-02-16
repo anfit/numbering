@@ -1,10 +1,10 @@
 var numbering = {};
-numbering.padding = 3;
+numbering.padding = 2;
 numbering.pagePrefix = "page_";
 numbering.pageSuffix = ".jpg";
-numbering.incrementAndPad = function(number, increment) {
+numbering.incrementAndPad = function(number, increment, padding) {
   var page = (parseInt(number, 10) + increment).toString();
-  return page.padStart(numbering.padding, "0");
+  return page.padStart(padding, "0");
 }
 numbering.copyToClipboard = function(element) {
   var $temp = $("<input>");
@@ -25,7 +25,7 @@ numbering.convertTagsToCommands = function() {
     var label = $(this).attr("label");
     var fill = $(this).attr("fill");
     var text =
-      `convert ${page} -background none -fill ${fill} -stroke 2 -pointsize 150 -font Times-Bold  \\( label:${label} -set page +${xPos}+${yPos} \\) +write info: -layers merge a_${page}; mv a_${page} ${page};`
+      `convert ${page} -background none -fill ${fill} -stroke 2 -pointsize 100 -font Times-Bold  \\( label:${label} -set page +${xPos}+${yPos} \\) +write info: -layers merge a_${page}; mv a_${page} ${page};`
     $("#box").append('<div class="tagref">' + text + '</div>');
     $(this).remove();
   });
@@ -44,7 +44,7 @@ numbering.imageClickHandler = function(e) { //Offset mouse Position
   var xPos = Math.floor((xMouse - image.offset().left) / imageScaleRatio);
   var yPos = Math.floor((yMouse - image.offset().top) / imageScaleRatio);
   var currentPage = $("#page").attr("src");
-  var label = numbering.incrementAndPad(index, 0) + suffix;
+  var label = numbering.incrementAndPad(index, 0, numbering.padding) + suffix;
 
   $("#index:text").val(index + 1)
   var tag = $("<div class='tag'></div>");
@@ -52,7 +52,7 @@ numbering.imageClickHandler = function(e) { //Offset mouse Position
     top: yMouse,
     left: xMouse
   });
-  tag.css('font-size', 150 * imageScaleRatio + "px");
+  tag.css('font-size', 100 * imageScaleRatio + "px");
   tag.attr("xPos", xPos);
   tag.attr("yPos", yPos);
   tag.attr("page", currentPage);
@@ -69,25 +69,25 @@ numbering.imageClickHandler = function(e) { //Offset mouse Position
 }
 numbering.goToNext = function() {
   var num = numbering.currentPageNumber();
-  $("#page").attr("src", numbering.pagePrefix + numbering.incrementAndPad(num, 1) + numbering.pageSuffix);
+  $("#page").attr("src", numbering.pagePrefix + numbering.incrementAndPad(num, 1, 3) + numbering.pageSuffix);
   numbering.turnPage();
 };
 numbering.goToPrev = function() {
   var num = numbering.currentPageNumber();
   if (num * 1 > 0) {
-    $("#page").attr("src", numbering.pagePrefix + numbering.incrementAndPad(num, -1) + numbering.pageSuffix);
+    $("#page").attr("src", numbering.pagePrefix + numbering.incrementAndPad(num, -1, 3) + numbering.pageSuffix);
     numbering.turnPage();
   }
 };
 numbering.goToNext10 = function() {
   var num = numbering.currentPageNumber();
-  $("#page").attr("src", numbering.pagePrefix + numbering.incrementAndPad(num, 10) + numbering.pageSuffix);
+  $("#page").attr("src", numbering.pagePrefix + numbering.incrementAndPad(num, 10, 3) + numbering.pageSuffix);
   numbering.turnPage();
 };
 numbering.goToPrev10 = function() {
   var num = numbering.currentPageNumber();
   if (num * 1 > 10) {
-    $("#page").attr("src", numbering.pagePrefix + numbering.incrementAndPad(num, -10) + numbering.pageSuffix);
+    $("#page").attr("src", numbering.pagePrefix + numbering.incrementAndPad(num, -10, 3) + numbering.pageSuffix);
     numbering.turnPage();
   }
 };
